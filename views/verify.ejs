@@ -38,23 +38,7 @@
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
-      <script>
-      $(document).ready(function(){
-          var from,to,subject,text;
-          $("#send_email").click(function(){     
-              to=$("#email").val();     
-              $("#message").text("Sending E-mail...Please wait");
-              $.get("http://localhost:3000/send",{to:to},function(data){
-              if(data=="sent")
-              {
-                  $("#message").empty().html("<p>Email is been sent at "+to+" . Please check inbox !</p>");
-              }
-
-      });
-          });
-      });
-      </script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
    </head>
    <!-- body -->
    <body class="main-layout">
@@ -89,63 +73,12 @@
             
          </div>
       </div>
-<div class="container">
-  <div class="reg">
-    <form method="post" action="/register">
-      <div class="register">
-        <h1>Register</h1>
-        <p>Please fill in this form to create an account.</p>
-        <hr>
-
-        <label for="username"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="username" id="username" required>
-
-        <label for="fullname"><b>Full Name</b></label>
-        <input type="text" placeholder="Enter Full Name" name="fullname" id="fullname" required>
-
-        <label for="email"><b>Email Id</b></label>
-        <input type="email" placeholder="Enter Email Id" name="email" id="email" required>
-
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" id="psw" required>
-
-        <label for="psw-repeat"><b>Confirm Password</b></label>
-        <input type="password" placeholder="Confirm Password" name="confirm-password" id="psw-repeat" required>
-        <hr>
-
-        <span id="message" style="color:red;font-size:20px"></span>
-        <button type="submit" id="send_email" value="Register" class="registerbtn">Register</button>
-        
+      <div class="container">
+        <h2>Email <%- mail %> is been successfully verified!</h2>
+        <a href=<%- link %>><h3 style="color:blue;">Click here to Login</h3></a>
       </div>
 
-      <!-- <div class="container signin">
-        <p>Already have an account? <a href="#">Sign in</a>.</p>
-      </div> -->
-    </form>
-  </div>
-  <div class="log">
-    <form method="post" action="/login">
-      <div class="login">
-        <h1>Login</h1>
-        <p>Please fill in this form to Login!</p>
-        <hr>
-
-        <label for="username"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="username" id="username" required>
-        
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" id="psw" required>
-
-        <button type="submit" value="Login" class="registerbtn">Login</button>
-      </div>
-
-      <!-- <div class="container signin">
-        <p>Already have an account? <a href="#">Sign in</a>.</p>
-      </div> -->
-    </form>
-  </div>
-</div>
-<div id="plant" class="contact_us layout_padding">
+      <div id="plant" class="contact_us layout_padding">
          <div class="container">
             <div class="row">
                <div class="col-md-12 ">

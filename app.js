@@ -3,7 +3,6 @@ const session = require('express-session');
 const path = require('path');
 const pageRouter = require('./routes/pages');
 const app = express();
-// const ejs = require("ejs");
 
 // for body parser. to collect data that sent from the client.
 app.use(express.urlencoded({ extended: false }));
@@ -13,8 +12,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/static", express.static(__dirname + '/static'));
 
 
-// Template engine. PUG
-// app.set('views', path.join(__dirname, 'views'));
+// Template engine. EJS
 app.set('view engine', 'ejs');
 
 // session
@@ -31,18 +29,6 @@ app.use(session({
 // // Routers
 app.use('/', pageRouter);
 
-// app.get("/home", (req, res) => {
-//     res.render("admin/index.ejs",);
-// });
-// app.get("/about", (req, res) => {
-//     res.render("admin/about.ejs",);
-// });
-// app.get("/cart", (req, res) => {
-//     res.render("admin/cart.ejs",);
-// });
-// app.get("/contact", (req, res) => {
-//     res.render("admin/contact.ejs",);
-// });
 
 // Errors => page not found 404
 app.use((req, res, next) => {

@@ -42,7 +42,7 @@ User.prototype = {
             bind.push(body[prop]);
         }
         // prepare the sql query
-        let sql = `INSERT INTO users(username, fullname, password) VALUES (?, ?, ?)`;
+        let sql = `INSERT INTO users(username, fullname, email, password, active) VALUES (?, ?, ?, ?, ?)`;
         // call the query give it the sql string and the values (bind array)
         pool.query(sql, bind, function (err, result) {
             if (err) throw err;
@@ -51,7 +51,7 @@ User.prototype = {
         });
     },
 
-    login: function (username, password, callback) {
+    login: function (username, password, active, callback) {
         // find the user data by his username.
         this.find(username, function (user) {
             // if there is a user by this username.
@@ -66,7 +66,7 @@ User.prototype = {
             // if the username/password is wrong then return null.
             callback(null);
         });
-
+        
     }
 
 }
