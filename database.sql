@@ -9,3 +9,11 @@ CREATE TABLE users (
 	active int(10),
 	PRIMARY KEY (id)
 );
+CREATE TABLE products ( 
+	id int AUTO_INCREMENT,
+	name varchar(40),
+	detail text(255),
+	price int(12),
+	img varchar(255),
+	PRIMARY KEY (id)
+);
