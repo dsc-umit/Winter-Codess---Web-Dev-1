@@ -24,7 +24,7 @@ User.prototype = {
             } else {
                 callback(null);
             }
-        });
+        }); 
     },
 
     // This function will insert data into the database. (create a new user)

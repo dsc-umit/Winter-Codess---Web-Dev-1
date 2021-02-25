@@ -1,6 +1,7 @@
 const express = require('express');
 const User = require('../core/user');
 const router = express.Router();
+const session = require('express-session');
 const nodemailer = require('nodemailer');
 const pool = require('../core/pool');
 
@@ -23,11 +24,17 @@ router.get('/home', (req, res, next) => {
     let user = req.session.user;
 
     if(user) {
-        res.render('admin/index.ejs', {opp:req.session.opp, name:user.fullname});
-        return;
-    }
+        pool.query("SELECT * FROM products", 
+            function(err, rows, fields) {
+                if (err) {
+                    next(err);
+                    return;
+                } else {
+                    res.render('admin/index.ejs', {items: rows, opp:req.session.opp });
+            };
+    });
     res.redirect('/');
-});
+};
 router.get('/cart', (req, res, next) => {
     let user = req.session.user;
 
